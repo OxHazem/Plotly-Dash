@@ -1,15 +1,29 @@
-
-import plotly as py
+#making a data profiling to understand the data 
+from ydata_profiling import ProfileReport
 import pandas as pd
+import plotly.express as px
+import matplotlib.pyplot as plt
 
-#load Data
-df=pd.read_csv("D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset.csv")
-data_frame = pd.DataFrame(df)
-#print(data_frame.head()) #checking the first 5 rows of the data
-#checking for na
-#print(df.isna().sum()) #there is no NA 
+def data_profiling():
+    data = pd.read_csv('D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset.csv')#copy the path of the csv file in the data folder 
+    profile = ProfileReport(data, title="Pandas Profiling Report")
+    profile.to_file("D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset_profiling.html")#copy the path of the html file in the data folder
+    return profile
+
+def basic_visualization():
+    data = pd.read_csv('D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset.csv') #copy the path of the csv file in the data folder
+    fig=px.scatter(data,x='Year',y='Price',title='Price vs Year')
+    fig2=px.scatter(data,x='Mileage',y='Price',title='Price vs Mileage')
+    fig3=px.scatter(data,x='Engine_Size',y='Price',title='Price vs Engine_Size')
+    return fig , fig2 , fig3
 
 
+
+        
+
+ 
+
+        
 
 
 
