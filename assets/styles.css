@@ -1,0 +1,29 @@
+#header {
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-family: sans-serif;
+    font-style: italic;
+}
+#chart1,#chart2 {
+    width : 38%;
+    display: inline-block;
+    height: 38%;
+
+}
+#chart3 {
+    width : 77%;
+    margin-left :180px;
+    height: 68%;
+    margin-top: 0px;
+}
+#charts {
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-family: sans-serif;
+    font-style: italic;
+    width : 100%;
+    
+}
+
