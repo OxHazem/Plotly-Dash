@@ -1,6 +1,9 @@
+#layout1 {
+    background-color: #333;
+}
 #header {
-    background-color: white;
-    color: black;
+    background-color: #333;
+    color: white;
     text-align: center;
     font-family: sans-serif;
     font-style: italic;
@@ -15,15 +18,37 @@
     width : 77%;
     margin-left :180px;
     height: 68%;
-    margin-top: 0px;
+    /* margin-top: 0px; */
 }
 #charts {
-    background-color: white;
-    color: black;
+    background-color: #333;
+    color: white;
     text-align: center;
     font-family: sans-serif;
     font-style: italic;
     width : 100%;
-    
-}
 
+}
+#footer {
+    display: inline-block;
+}
+#footer{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+#submit {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    
+  }
+
+  #submit:hover {
+    background-color: #2980b9;
+  }
