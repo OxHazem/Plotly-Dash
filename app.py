@@ -1,6 +1,6 @@
 from visualizationAndData import data_profiling
 from dash import Dash
-from pages.Layout1 import layout1 ,changing_layouts,main_layout
+from pages.Layout1 import main_layout
 #this will be the main file for the mini project 
 #first we need to make ydata profiling to understand the data
 #data_profiling()

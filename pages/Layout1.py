@@ -15,7 +15,7 @@ layout1 = html.Div(id='layout1', children=[
     
     
     ])
-layout2=html.Div(id='layout2' , children=[html.Link(rel='stylesheet',href="D:\DownLoad\projects\plotly-dash-visualization\\assets\style2.css"),html.Button("Previous Page",id='submit2',n_clicks=0),html.H1("This is the second page")])
+layout2=html.Div(id='layout2' , children=[html.Link(rel='stylesheet',href="D:\DownLoad\projects\plotly-dash-visualization\\assets\style2.css"),html.Button("Previous Page",id='submit',n_clicks=0),html.H1("This is the second page")])
 
 main_layout=html.Div([
     dcc.Store(id='page_tracker',data=1),
@@ -24,10 +24,19 @@ main_layout=html.Div([
 
 # the next function is part will be the call backs and the function that will change between the layouts 
 @callback(
-  Output('page_content','children'), # wee need to locate where the change will happen
-  Input('submit', 'n_clicks')  
+  Output('page_content','children'),
+  Output('page_tracker','data'),# wee need to locate where the change will happen
+  Input('submit', 'n_clicks'), 
+  Input ('page_tracker','data')
 ) # to solve this we will create a new layout (main_layout)
-
+def changing_layout(n_clicks,data):
+    if(data==1) :
+        if(n_clicks !=0) : 
+            return layout2 ,2
+    elif (data==2):
+        if(n_clicks!=0) : 
+            return layout1,1
+        
 
 
 
