@@ -15,7 +15,12 @@ layout1 = html.Div(id='layout1', children=[
     
     
     ])
-layout2=html.Div(id='layout2' , children=[html.Link(rel='stylesheet',href="D:\DownLoad\projects\plotly-dash-visualization\\assets\style2.css"),html.Button("Previous Page",id='submit',n_clicks=0),html.H1("This is the second page")])
+layout2=html.Div(id='layout2' , children=[html.Link(rel='stylesheet',href="D:\DownLoad\projects\plotly-dash-visualization\\assets\style2.css"),
+                                          html.Button("Previous Page",id='submit',n_clicks=0),
+                                          html.H1("This is the second page"),
+                                          
+                                          
+                                          ])
 
 main_layout=html.Div([
     dcc.Store(id='page_tracker',data=1),
@@ -36,6 +41,7 @@ def changing_layout(n_clicks,data):
     elif (data==2):
         if(n_clicks!=0) : 
             return layout1,1
+
         
 
 
