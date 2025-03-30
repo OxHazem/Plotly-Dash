@@ -17,6 +17,8 @@ def basic_visualization(): # After we made the layout of charts of the layout 1 
     fig3=px.scatter(data,x='Engine_Size',y='Price',title='Price vs Engine_Size')
     return fig , fig2 , fig3
 
+# def Visualization_second_page():
+
 
 
         

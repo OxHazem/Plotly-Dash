@@ -1,7 +1,8 @@
-from dash import html
-from dash import dcc ,Input,Output,callback
+from dash import html, dcc, Input, Output, callback
 from visualizationAndData import basic_visualization
 
+
+# this will help me change between these two 
 layout1 = html.Div(id='layout1', children=[
     html.Link(rel='stylesheet',href='D:\DownLoad\projects\plotly-dash-visualization\\assets\styles.css'),
     html.Div( id='header' , children=[
@@ -14,18 +15,13 @@ layout1 = html.Div(id='layout1', children=[
     
     
     ])
-layout2=html.Div(id='layout2' , children=[html.Link(rel='stylesheet',href="D:\DownLoad\projects\plotly-dash-visualization\\assets\style2.css"),html.Button("Previous Page",id='submit',n_clicks=0),html.H1("This is the second page")])
+layout2=html.Div(id='layout2' , children=[html.Link(rel='stylesheet',href="D:\DownLoad\projects\plotly-dash-visualization\\assets\style2.css"),html.Button("Previous Page",id='submit2',n_clicks=0),html.H1("This is the second page")])
 
-@callback(
-    Output('layout1', 'children'),
-    Input('submit', 'n_clicks')
-)
-def update(n_clicks):
-    if n_clicks ==0:
-        return layout1
-    else:
-        return layout2 
 
+
+
+
+    
 
 
 
