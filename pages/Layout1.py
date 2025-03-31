@@ -1,5 +1,5 @@
 from dash import html, dcc, Input, Output, callback
-from visualizationAndData import basic_visualization
+from visualizationAndData import basic_visualization ,Graph_one,Graph_two,Graph_three,Graph_four
 
 
 # this will help me change between these two 
@@ -17,7 +17,7 @@ layout1 = html.Div(id='layout1', children=[
     ])
 layout2=html.Div(id='layout2' , children=[html.Link(rel='stylesheet',href="D:\DownLoad\projects\plotly-dash-visualization\\assets\style2.css"),
                                           html.Button("Previous Page",id='submit',n_clicks=0),
-                                          html.H1("This is the second page"),
+                                          dcc.Dropdown([''])
                                           
                                           
                                           ])
