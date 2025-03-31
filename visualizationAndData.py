@@ -17,11 +17,11 @@ def basic_visualization(): # After we made the layout of charts of the layout 1 
     fig3=px.scatter(data,x='Engine_Size',y='Price',title='Price vs Engine_Size')
     return fig , fig2 , fig3
 #to make visualiztion first wee need to imagine the basic KPI we want to implement 
-def Graph_one(Brand_name): # the visualization of the price distrbution of specific brand 
+def Graph_one(Brand_name , Brand_model): # the visualization of the price distrbution of specific brand 
     data=pd.read_csv("D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset.csv") # read csv
     df=pd.DataFrame(data)
-    brand_df=df[df['Brand']==Brand_name]
-    fig=px.histogram(brand_df,x='Price',nbins=10,title=f"the price distribution of {Brand_name}")
+    brand_df=df[(df['Brand']==Brand_name)&(df['Model']==Brand_model)]
+    fig=px.histogram(brand_df,x='Price',nbins=10,title=f"the price distribution of {Brand_name} of Model {Brand_model}")
     plt.xlabel("Price")
     plt.ylabel("Frequency")
     fig.show()
@@ -40,15 +40,21 @@ def Graph_three(Brand_name): # how many people own a specifc Brand type of Trans
     Transmission_count=Brand_df.groupby("Transmission")['Owner_Count'].sum().reset_index()
     fig=px.bar(Transmission_count,x="Transmission",y="Owner_Count",title=f"the owner count in of each Transmission in {Brand_name}")
     fig.show()
-
-
+def Graph_four(Brand_name): # this is the replacement of graph one in condition of chossing the Brand without Model
+    data=pd.read_csv("D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset.csv") # read csv
+    df=pd.DataFrame(data)
+    brand_df=df[(df['Brand']==Brand_name)]
+    fig=px.histogram(brand_df,x='Price',nbins=10,title=f"the price distribution of {Brand_name}")
+    plt.xlabel("Price")
+    plt.ylabel("Frequency")
+    fig.show() 
 
 
 
 
 
 #testing area 
-#Graph_one("Kia")
+#Graph_one("Kia","Rio")
 #Graph_two("Kia")
 #Graph_three("Kia")
 
