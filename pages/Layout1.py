@@ -1,5 +1,5 @@
 from dash import html, dcc, Input, Output, callback
-from visualizationAndData import basic_visualization ,Graph_one,Graph_two,Graph_three,Graph_four
+from visualizationAndData import basic_visualization ,Graph_one,Graph_two,Graph_three,Graph_four,unique_brands
 
 
 # this will help me change between these two 
@@ -16,10 +16,13 @@ layout1 = html.Div(id='layout1', children=[
     
     ])
 layout2=html.Div(id='layout2' , children=[html.Link(rel='stylesheet',href="D:\DownLoad\projects\plotly-dash-visualization\\assets\style2.css"),
-                                          html.Button("Previous Page",id='submit',n_clicks=0),
-                                          dcc.Dropdown([''])
-                                          
-                                          
+                                          html.Button("Previous Page",id='submit',n_clicks=0), 
+                                          dcc.Dropdown(unique_brands(),"Kia",id="dropdown_for_layout2"),
+                                          html.Div(id="charts",children=[
+                                              dcc.Graph(id="chart1"),
+                                              dcc.Graph(id="chart2"),
+                                              dcc.Graph(id="chart3")
+                                          ])
                                           ])
 
 main_layout=html.Div([
@@ -41,6 +44,16 @@ def changing_layout(n_clicks,data):
     elif (data==2):
         if(n_clicks!=0) : 
             return layout1,1
+# we need to create another callback for the charts for layout 2 
+@callback(
+    Output("chart1", "figure"),
+    Output("chart2","figure"),
+    Output("chart3","figure"),
+    Input("dropdown_for_layout2","value")
+)
+def changing_charts(value):
+    return Graph_four(value),Graph_two(value),Graph_three(value)
+
 
         
 

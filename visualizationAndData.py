@@ -24,14 +24,14 @@ def Graph_one(Brand_name , Brand_model): # the visualization of the price distrb
     fig=px.histogram(brand_df,x='Price',nbins=10,title=f"the price distribution of {Brand_name} of Model {Brand_model}")
     plt.xlabel("Price")
     plt.ylabel("Frequency")
-    fig.show()
+    return fig
 def Graph_two(Brand_name): # how many people own a specific brand
     data=pd.read_csv("D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset.csv")
     df=pd.DataFrame(data)
     brand_df=df[df['Brand']==Brand_name]
     Y=brand_df.groupby("Model")['Owner_Count'].sum().reset_index()
     fig=px.bar(Y,x="Model",y="Owner_Count",title=f"the Owner count of {Brand_name}")
-    fig.show()
+    return fig
 
 def Graph_three(Brand_name): # how many people own a specifc Brand type of Transmission
     data=pd.read_csv("D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset.csv")
@@ -39,7 +39,7 @@ def Graph_three(Brand_name): # how many people own a specifc Brand type of Trans
     Brand_df=df[df['Brand']==Brand_name]
     Transmission_count=Brand_df.groupby("Transmission")['Owner_Count'].sum().reset_index()
     fig=px.bar(Transmission_count,x="Transmission",y="Owner_Count",title=f"the owner count in of each Transmission in {Brand_name}")
-    fig.show()
+    return fig
 def Graph_four(Brand_name): # this is the replacement of graph one in condition of chossing the Brand without Model
     data=pd.read_csv("D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset.csv") # read csv
     df=pd.DataFrame(data)
@@ -47,8 +47,14 @@ def Graph_four(Brand_name): # this is the replacement of graph one in condition 
     fig=px.histogram(brand_df,x='Price',nbins=10,title=f"the price distribution of {Brand_name}")
     plt.xlabel("Price")
     plt.ylabel("Frequency")
-    fig.show() 
+    return fig 
+def unique_brands():
+    data=pd.read_csv("D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset.csv")
+    df=pd.DataFrame(data)
+    list_of_brands=df['Brand'].unique().tolist()
+    return list_of_brands
 
+    
 
 
 
