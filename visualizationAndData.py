@@ -44,7 +44,7 @@ def Graph_four(Brand_name): # this is the replacement of graph one in condition 
     data=pd.read_csv("D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset.csv") # read csv
     df=pd.DataFrame(data)
     brand_df=df[(df['Brand']==Brand_name)]
-    fig=px.histogram(brand_df,x='Price',nbins=10,title=f"the price distribution of {Brand_name}")
+    fig=px.histogram(brand_df,x='Price',nbins=5,title=f"the price distribution of {Brand_name}")
     plt.xlabel("Price")
     plt.ylabel("Frequency")
     return fig 
@@ -52,11 +52,14 @@ def unique_brands():
     data=pd.read_csv("D:\DownLoad\projects\plotly-dash-visualization\data\car_price_dataset.csv")
     df=pd.DataFrame(data)
     list_of_brands=df['Brand'].unique().tolist()
-    return list_of_brands
-
+    list_of_models={}
+    for i in list_of_brands : 
+        listx=df[df['Brand']==i]['Model'].unique().tolist()
+        list_of_models[i]=listx
+    return list_of_brands ,list_of_models
     
 
-
+unique_brands()
 
 
 #testing area 

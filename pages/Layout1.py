@@ -17,11 +17,15 @@ layout1 = html.Div(id='layout1', children=[
     ])
 layout2=html.Div(id='layout2' , children=[html.Link(rel='stylesheet',href="D:\DownLoad\projects\plotly-dash-visualization\\assets\style2.css"),
                                           html.Button("Previous Page",id='submit',n_clicks=0), 
-                                          dcc.Dropdown(unique_brands(),"Kia",id="dropdown_for_layout2"),
+                                          dcc.Dropdown(unique_brands()[0],"Kia",id="dropdown_for_layout2"),
                                           html.Div(id="charts",children=[
                                               dcc.Graph(id="chart1"),
                                               dcc.Graph(id="chart2"),
                                               dcc.Graph(id="chart3")
+                                          ]),
+                                          dcc.Dropdown(id="dropdown_for_section2"),
+                                          html.Div(id="charts2",children=[
+                                              dcc.Graph(id="chart12")
                                           ])
                                           ])
 
@@ -54,8 +58,28 @@ def changing_layout(n_clicks,data):
 def changing_charts(value):
     return Graph_four(value),Graph_two(value),Graph_three(value)
 
+@callback(
+        Output("dropdown_for_section2","options"),
+        Input("dropdown_for_layout2","value")
+)
+def changing_dictionary_values(value):
+    for brand,model in unique_brands()[1].items() :
+        if(brand==value) : 
+            return model 
 
-        
+
+
+
+
+
+
+@callback(
+    Output("chart12","figure"),
+    Input("dropdown_for_layout2","value"), #Brand
+    Input("dropdown_for_section2","value")#Model
+)
+def changing_chart_section2(Brand_value,Model_value):
+    return Graph_one(Brand_value,Model_value)
 
 
 
