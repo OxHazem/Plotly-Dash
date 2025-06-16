@@ -15,15 +15,16 @@ layout1 = html.Div(id='layout1', children=[
     
     
     ])
+
 layout2=html.Div(id='layout2' , children=[html.Link(rel='stylesheet',href="D:\DownLoad\projects\plotly-dash-visualization\\assets\style2.css"),
-                                          html.Button("Previous Page",id='submit',n_clicks=0), 
+                                          html.Button("Previous Page",id='submit',n_clicks=0),
                                           dcc.Dropdown(unique_brands()[0],"Kia",id="dropdown_for_layout2"),
                                           html.Div(id="charts",children=[
                                               dcc.Graph(id="chart1"),
                                               dcc.Graph(id="chart2"),
                                               dcc.Graph(id="chart3")
                                           ]),
-                                          dcc.Dropdown(id="dropdown_for_section2"),
+                                          dcc.Dropdown(id="dropdown_for_section2" , placeholder="choose a model"),
                                           html.Div(id="charts2",children=[
                                               dcc.Graph(id="chart12")
                                           ])
